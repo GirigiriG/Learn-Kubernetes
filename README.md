@@ -68,4 +68,4 @@ spec:
       targetPort: 27017
 ```
 
-![Screen Shot 2022-10-17 at 9.51.37 PM.png](./images/service-flow.png)
+![Sservice flow](./images/service-flow.png)
