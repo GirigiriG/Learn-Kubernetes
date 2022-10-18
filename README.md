@@ -68,4 +68,4 @@ spec:
       targetPort: 27017
 ```
 
-![Screen Shot 2022-10-17 at 9.51.37 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/06b070b9-a50f-4cd9-baf5-9677239fcf1d/Screen_Shot_2022-10-17_at_9.51.37_PM.png)
+![Screen Shot 2022-10-17 at 9.51.37 PM.png](./images/service-flow.png)
