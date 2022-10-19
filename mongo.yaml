@@ -1,24 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: monogo-deployment
+  name: mongo-deployment
   labels:
-    app: monogo
+    app: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: monogo
+      app: mongo
   template:
     metadata:
       labels:
-        app: monogo
+        app: mongo
     spec:
       containers:
-      - name: monogo
-        image: monogo:5.0
+      - name: mongo
+        image: mongo:5.0
         ports:
         - containerPort: 27017
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef: 
+                name: mongo-secret
+                key: mongo-user
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef: 
+                name: mongo-secret
+                key: mongo-password
 ---
 apiVersion: v1
 kind: Service
