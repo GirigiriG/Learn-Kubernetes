@@ -69,3 +69,12 @@ spec:
 ```
 
 ![Sservice flow](./images/service-flow.png)
+
+## Run the following commands when you want to create an EBS volume
+```bash
+eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=<CLUSTER_NAME> --approve
+
+eksctl create iamserviceaccount --name ebs-csi-controller-sa --namespace kube-system --cluster <CLUSTER_NAME> --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy --approve  --role-only  --role-name AmazonEKS_EBS_CSI_DriverRole
+
+eksctl create addon --name aws-ebs-csi-driver --cluster <CLUSTER_NAME> --service-account-role-arn arn:aws:iam::$(aws sts get-caller-identity --query Account --output text):role/AmazonEKS_EBS_CSI_DriverRole --force
+```
