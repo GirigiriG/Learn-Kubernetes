@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp
-spec: 
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: richardchesterwood/k8s-fleetman-webapp-angular:release2
+        image: "richardchesterwood/k8s-fleetman-webapp-angular:release0"
         resources:
           limits:
             memory: 512Mi
@@ -25,7 +25,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: queue
-spec: 
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -49,7 +49,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simulator
-spec: 
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -69,14 +69,14 @@ spec:
           limits:
             memory: 512Mi
             cpu: "0.5"
-      
+
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: position-tracker
-spec: 
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -103,7 +103,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-gateway
-spec: 
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -122,5 +122,4 @@ spec:
         resources:
           limits:
             memory: 512Mi
-            cpu: "256m"
-      
+            cpu: "1m"
