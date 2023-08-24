@@ -84,3 +84,7 @@ eksctl create addon --name aws-ebs-csi-driver --cluster fleetman --service-accou
 eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=fleetman --approve && eksctl create iamserviceaccount --name ebs-csi-controller-sa --namespace kube-system --cluster fleetman --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy --approve  --role-only  --role-name AmazonEKS_EBS_CSI_DriverRole && eksctl create addon --name aws-ebs-csi-driver --cluster fleetman --service-account-role-arn arn:aws:iam::$(aws sts get-caller-identity --query Account --output text):role/AmazonEKS_EBS_CSI_DriverRole --force
 
 ```
+## Use the following command to find which nodes a pod is associated to.
+```bash
+kubectl get pods -o wide
+```
